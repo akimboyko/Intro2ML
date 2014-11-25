@@ -55,7 +55,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="linear-model" class="section level3">
 <h3>Linear model</h3>
 <pre class="r"><code>lmfit &lt;- glm(as.factor(Survived) ~ Pclass + Sex + Pclass:Sex + Age + FamilySize + RelFare
-                                    + Side + Deck + as.factor(Title),
+                                    + as.factor(Title),
              family = binomial(logit), 
              data = trainSet)
 
@@ -63,49 +63,39 @@ summary(lmfit)</code></pre>
 <pre><code>## 
 ## Call:
 ## glm(formula = as.factor(Survived) ~ Pclass + Sex + Pclass:Sex + 
-##     Age + FamilySize + RelFare + Side + Deck + as.factor(Title), 
-##     family = binomial(logit), data = trainSet)
+##     Age + FamilySize + RelFare + as.factor(Title), family = binomial(logit), 
+##     data = trainSet)
 ## 
 ## Deviance Residuals: 
 ##    Min      1Q  Median      3Q     Max  
-## -2.745  -0.550  -0.398   0.361   2.500  
+## -2.795  -0.557  -0.397   0.449   2.486  
 ## 
 ## Coefficients:
 ##                         Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)             2.03e+01   2.40e+03    0.01  0.99325    
-## Pclass                 -1.58e+00   4.13e-01   -3.83  0.00013 ***
-## Sexmale                -1.57e+01   2.40e+03   -0.01  0.99478    
-## Age                    -3.77e-02   1.32e-02   -2.86  0.00423 ** 
-## FamilySize             -4.84e-01   1.01e-01   -4.78  1.7e-06 ***
-## RelFare                 4.63e-03   4.33e-03    1.07  0.28540    
-## Sidestarboard           3.33e-01   6.11e-01    0.55  0.58548    
-## SideUNK                -2.01e+00   2.42e+00   -0.83  0.40732    
-## DeckA                  -3.22e+00   2.81e+00   -1.14  0.25292    
-## DeckB                  -1.02e+00   2.49e+00   -0.41  0.68342    
-## DeckC                  -1.88e+00   2.47e+00   -0.76  0.44565    
-## DeckD                  -2.68e-01   2.31e+00   -0.12  0.90779    
-## DeckE                   1.18e-01   2.48e+00    0.05  0.96208    
-## DeckF                  -1.84e+00   2.61e+00   -0.70  0.48248    
-## DeckG                   1.41e+01   1.68e+03    0.01  0.99329    
-## DeckT                  -1.49e+01   2.40e+03   -0.01  0.99506    
-## as.factor(Title)Lady    2.73e+00   2.79e+03    0.00  0.99922    
-## as.factor(Title)Master  1.38e+00   1.33e+00    1.04  0.29810    
-## as.factor(Title)Miss   -1.18e+01   2.40e+03    0.00  0.99607    
-## as.factor(Title)Mlle    3.89e-01   2.91e+03    0.00  0.99989    
-## as.factor(Title)Mr     -1.84e+00   1.18e+00   -1.56  0.11759    
-## as.factor(Title)Mrs    -1.04e+01   2.40e+03    0.00  0.99655    
-## as.factor(Title)Ms      2.93e+00   3.39e+03    0.00  0.99931    
-## as.factor(Title)Rev    -1.59e+01   1.37e+03   -0.01  0.99073    
-## as.factor(Title)Sir    -1.70e+01   1.59e+03   -0.01  0.99148    
-## Pclass:Sexmale          1.16e+00   4.43e-01    2.62  0.00873 ** 
+## (Intercept)             2.07e+01   2.40e+03    0.01   0.9931    
+## Pclass                 -1.96e+00   3.48e-01   -5.62  2.0e-08 ***
+## Sexmale                -1.86e+01   2.40e+03   -0.01   0.9938    
+## Age                    -3.89e-02   1.30e-02   -2.99   0.0028 ** 
+## FamilySize             -4.04e-01   1.01e-01   -4.00  6.4e-05 ***
+## RelFare                 4.11e-03   3.68e-03    1.12   0.2639    
+## as.factor(Title)Lady   -1.59e+01   2.40e+03   -0.01   0.9947    
+## as.factor(Title)Master  2.59e+00   1.31e+00    1.97   0.0483 *  
+## as.factor(Title)Miss   -1.34e+01   2.40e+03   -0.01   0.9955    
+## as.factor(Title)Mlle   -1.12e+00   2.77e+03    0.00   0.9997    
+## as.factor(Title)Mr      6.64e-02   1.16e+00    0.06   0.9545    
+## as.factor(Title)Mrs    -1.25e+01   2.40e+03   -0.01   0.9959    
+## as.factor(Title)Ms      1.19e+00   3.39e+03    0.00   0.9997    
+## as.factor(Title)Rev    -1.46e+01   1.05e+03   -0.01   0.9889    
+## as.factor(Title)Sir     1.00e+00   1.53e+00    0.66   0.5110    
+## Pclass:Sexmale          9.79e-01   3.77e-01    2.59   0.0095 ** 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 788.20  on 593  degrees of freedom
-## Residual deviance: 444.14  on 568  degrees of freedom
-## AIC: 496.1
+##     Null deviance: 792.04  on 593  degrees of freedom
+## Residual deviance: 472.13  on 578  degrees of freedom
+## AIC: 504.1
 ## 
 ## Number of Fisher Scoring iterations: 15</code></pre>
 <pre class="r"><code>prediction &lt;- round(predict(lmfit, cvSet, type=&quot;response&quot;))
@@ -115,29 +105,29 @@ confusionMatrix(as.factor(cvSet$Survived), prediction)</code></pre>
 ## 
 ##           Reference
 ## Prediction   0   1
-##          0 149  31
-##          1  30  87
+##          0 174  10
+##          1  35  78
 ##                                         
-##                Accuracy : 0.795         
-##                  95% CI : (0.744, 0.839)
-##     No Information Rate : 0.603         
-##     P-Value [Acc &gt; NIR] : 1.3e-12       
+##                Accuracy : 0.848         
+##                  95% CI : (0.803, 0.887)
+##     No Information Rate : 0.704         
+##     P-Value [Acc &gt; NIR] : 4.71e-09      
 ##                                         
-##                   Kappa : 0.571         
-##  Mcnemar's Test P-Value : 1             
+##                   Kappa : 0.664         
+##  Mcnemar's Test P-Value : 0.000347      
 ##                                         
-##             Sensitivity : 0.832         
-##             Specificity : 0.737         
-##          Pos Pred Value : 0.828         
-##          Neg Pred Value : 0.744         
-##              Prevalence : 0.603         
-##          Detection Rate : 0.502         
-##    Detection Prevalence : 0.606         
-##       Balanced Accuracy : 0.785         
+##             Sensitivity : 0.833         
+##             Specificity : 0.886         
+##          Pos Pred Value : 0.946         
+##          Neg Pred Value : 0.690         
+##              Prevalence : 0.704         
+##          Detection Rate : 0.586         
+##    Detection Prevalence : 0.620         
+##       Balanced Accuracy : 0.859         
 ##                                         
 ##        'Positive' Class : 0             
 ## </code></pre>
-<p>Submiting logistic regression will retult in <strong>76.6% results to be correct</strong></p>
+<p>Submitting logistic regression will result in <strong>76.6% results to be correct</strong></p>
 </div>
 
 
