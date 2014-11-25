@@ -39,7 +39,7 @@
 				<section>
 					<h1>Introduction to Machine Learning</h1>
 					<h3>Using R and F# with examples from Kaggle competitions</h3>
-					<p>by <a href="http://akimboyko.github.io">Akim Boyko</a> / <a href="http://twitter.com/AkimBoyko">@AkimBoyko</a>
+					<p>by Akim Boyko <a href="http://akimboyko.github.io">github</a> / <a href="http://twitter.com/AkimBoyko">twitter</a>
 					</p>
 					<p><img style='width:200px; height: auto; border: 0px; box-shadow: none' 
                         src='images/itera_logo.png'
@@ -252,7 +252,7 @@
 						<script type="text/template">
 							## Null model
 
-							[R snippet](./NullModel.html)
+							[R snippet](./samples/NullModel.html)
 						</script>
 					</section>
 
@@ -300,10 +300,276 @@
 						<script type="text/template">
 							## Managing data
 
-							[R snippet](./ManagingData.html)
+							[R snippet](./samples/ManagingData.html)
 						</script>
 					</section>
 				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Linear model
+
+							![Linear model](./images/LinearModel.png "Linear model")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Linear model
+
+							* Linear classification
+							* Linear regression
+							* Logistic regression
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Non-linear transformation							
+
+							![Non-linear transformation](./images/NonLinearTransformation.png "Non-linear transformation")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Approximation of non linear function
+
+							![Non-linear transformation](./images/ApproxNonLinearFunction.png "Approximation of non linear function")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Linear model
+
+							[R snippet](./samples/LinearModel.html)
+						</script>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Generalization vs. memorization
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Bias
+
+							Systematic error in the model, such as always underpredicting
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Variance
+
+							Undesirable (but non-systematic) distance between predictions and actual values. Often due to oversensitivity of the model training procedure to small variations in the distribution of training data
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Overfitting
+
+							The Most Important Scientific Problem You`ve Never Heard Of
+							
+							-Nate Silver
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Overfitting
+
+							Features of the model that arise from relations that are in the **training data**, but not representative of the **general population**. 
+
+							Overfit can usually be reduced by acquiring more training data, and by techniques like regularization and bagging
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Overfitting
+
+							![Overfitting](./images/Overfitting.png "Overfitting")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Approximation vs. generalization tradeoff
+
+							![Approximation vs. generalization tradeoff](./images/ApproxVsGenTradeoff.png "Approximation vs. generalization tradeoff")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Approximation vs. generalization tradeoff
+
+							* More complex hypothesis — better approximation
+							* Less complex hypothesis — better generalization
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Model complexity vs. Prediction Error
+
+							![Model complexity vs. Prediction Error](./images/ModelComplexityVsPredictionError.png "Model complexity vs. Prediction Error")
+						</script>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Error measure
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Confusion matrix
+
+							Evaluating classification models
+
+							![Confusion matrix](./images/ConfusionMatrix.png "Confusion matrix")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Accuracy
+
+							``(TP+TN)/(TP+FP+FN+TN)``
+
+							We need most of our decisions to be correct
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Precision
+
+							``TP/(TP + FP)``
+
+							Most of what we marked as spam had darn well better be spam
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Recall/Sensitivity
+
+							``TP/(TP+FN)``
+
+							We have to cut a lot of spam, other- wise the user won’t see a benefit
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Root Mean Square Error
+
+							Evaluating scoring/regression models
+
+							![Root Mean Square Error](./images/RMSE.png "Root Mean Square Error")
+						</script>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Validation
+
+							The validation set: ``60%/40%`` or ``60%/20%/20%``
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Cross validation
+
+							* Leave-one-out cross-validation
+							* k-fold cross-validation
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Cross validation
+
+							[R snippet](./samples/CrossValidation.html)
+						</script>
+					</section>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Model selection
+
+						Prediction accuracy versus interpretability:
+
+						* Linear models and trees are easy to interpret
+						* Thin-plate splines or support vectors are not
+					</script>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Decision tree
+
+							Simple model type: they make a prediction that is piecewise constant
+
+							![Decision tree](./images/DecisionTree.png "Decision tree")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Decision tree
+
+							A two-dimensional classification examples in which one of the true decision boundary is _linear_ (Top Row) and another true decision boundary is _non-linear_ (Bottom Row)
+
+							![Decision tree](./images/DecisionTreeBoundary.png "Decision tree")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Decision tree
+
+							[R snippet](./samples/DecisionTree.html)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Random forests
+
+							Random forests provide an improvement over bagged trees by way of a **small tweak** that decorrelates the trees
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Random forests
+
+							[R snippet](./samples/RandomForrest.html)
+						</script>
+					</section>
+				</section>
+				
+
+
 
 
 
