@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introduction to Machine Learning</title>
+
+		<meta name="description" content="Using R and F# with examples from Kaggle competition Titanic">
+		<meta name="author" content="Akim Boyko">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Introduction to Machine Learning</h1>
+					<h3>Using R and F# with examples from Kaggle competition Titanic</h3>
+					<p>by <a href="http://akimboyko.github.io">Akim Boyko</a> / <a href="http://twitter.com/AkimBoyko">@AkimBoyko</a>
+					</p>
+					<p><img style='width:200px; height: auto; border: 0px; box-shadow: none' 
+                        src='images/itera_logo.png'
+                        alt='Itera logo' /></p>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							A computer program is said to learn from experience _E_ with respect to some class of tasks _T_ and performance measure _P_, if its performance at tasks in _T_, as measured by _P_, improves with experience _E_
+
+							-Tom M. Mitchell
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+						## Vapnik–Chervonenkis theory
+
+						The theory is a form of **computational learning** theory, which attempts to explain the learning process from a _statistical_ point of view
+						</script>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							The purpose of computing is insight, not numbers
+							
+							-Richard Hamming
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Types of Learning
+
+							Using a set of observations to uncover an underlying process
+
+							* A pattern exists
+							* We cannot pin it down mathematically
+							* We have data on it
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Supervised learning
+
+							``(input, correct output)``
+
+							![Supervised learning](./images/SupervisedLearning.png "Supervised learning")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Supervised learning
+
+							``(input, correct output)``
+
+							* Classification
+							* Regression
+							* Scoring
+							* Ranking
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Unsupervised learning
+
+							``(input, ???)``
+
+							![Unsupervised learning](./images/UnsupervisedLearning.png "Unsupervised learning")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Unsupervised learning
+
+							``(input, ???)``
+
+							* Clustering
+							 * K-means
+							 * Hierarchical
+							* Apriori algorithm for finding association rules
+							* Dimension reduction
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Reinforcement learning
+
+							``(input, some output, grade for this output)``
+
+							![Reinforcement learning](./images/ReinforcementLearning.png "Reinforcement learning")
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Reinforcement learning
+
+							``(input, some output, grade for this output)``
+
+							* Games/Robots
+							 * [Starfish Self Modeling Robot](http://youtu.be/ehno85yI-sA)
+							 * [Stanford Autonomous Helicopter](http://youtu.be/kN6ifrqwIMY)
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Batch vs. On-Line Learning
+
+							``(input, some output, true value after delay/for some price)``
+
+							* Still vs. stream
+							* Active learning
+							 * If the classifier is _unsure_ of the classification, then the classifier _can_ ask for **ground truth** at some **significant cost**
+
+							![Amazon Mechanical Turk](./images/AmazonMechanicalTurk.png "Amazon Mechanical Turk")
+						</script>
+					</section>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Learning puzzle
+
+						![Learning puzzle from 'Learning from Data' course](./images/Puzzle.png "Learning puzzle from 'Learning from Data' course")
+
+						from 'Learning from Data' course
+					</script>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							![Netflix](./images/Netflix.png "Netflix")
+
+							### Netflix Prize
+							* Netflix provided a training data set of 100,480,507 ratings that 480,189 users gave to 17,770 movies
+							* The qualifying data set contains over 2,817,131 triplets, with grades known only to the jury
+							* In order to win the grand prize of $1,000,000, a participating team had to improve Netflix`s Cinematch by 10%
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							![Kaggle](./images/Kaggle.png "Kaggle")
+
+							Predictive modelling company
+
+							* Facebook Recruiting Competition
+							* Gender Prediction from Handwriting
+							* Traveling Santa Problem
+							* Galaxy Zoo — The Galaxy Challenge
+							* Flight Quest — Make flying more efficient
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Titanic
+
+							Machine Learning from Disaster
+
+							![Titanic: Machine Learning from Disaster](./images/Titanic.jpg "Titanic: Machine Learning from Disaster")
+						</script>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Training Sets
+
+							A training set consists of a set of pairs (x, y), called training examples:
+
+							* `x` — feature vector: categorical/numerical
+							* `y` is the label
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Training Sets
+
+							* y is a real number. In this case, the problem is called _regression_
+							* y is a boolean value true-or-false, more commonly written as +1 and −1, respectively. In this class the problem is _binary classification_
+							* y is a member of some finite set, and each member represents one class. The problem is _multiclass classification_
+						</script>
+					</section>
+				</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<section data-markdown>
+					<script type="text/template">
+						## F# has new logo!
+					
+						![F# new logo](./images/fsharp512.png "F# new logo")
+
+						image by [The F# Software Foundation](http://fsharp.org/foundation/logo.html)
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						### Math
+
+						∀ a, b ∈ Z, a + b == b + a
+
+						### F&#35;
+
+						```
+						forAll (Arb.Default.Int32()) (fun a b -> a + b = b + a)
+						```
+					</script>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.pack.js', async: true, callback: function() { hljs.initHighlighting.called = false; hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
